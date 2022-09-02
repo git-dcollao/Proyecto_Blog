@@ -1,0 +1,32 @@
+django-admin startproject "nombreProyecto" #Crear proyecto
+python manage.py startapp "nombre Aplicacion" #Crear app
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+ENTORNO VIRTUAL
+-------------------------------
+pip install virtualenv
+virtualenv --version
+virtualenv <nombre del entorno a crear>
+env\Scripts\activate    #Activar el entorno virtual  OJO Lo llame <env>
+venv\Scripts\activate
+
+
+GIT
+---------------------------------
+git status
+git commit -m "Crear vista entregable con su html"
+git push
+git checkout -b curso
+git add .
+git commit -m "Ccrear la ruta de curso"
+
+dentro de la carpeta >> git clone https://el link copiado desde git
+
+#Instala las librerias que estan en el archivo
+pip install -r requirements.txt
+#Muestra lasl ibrerias que estan instaladas
+pip freeze
+
