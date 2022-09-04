@@ -1,9 +1,10 @@
 from django.db import models
+from django.views.generic import ListView, DetailView
 
 # Create your models here.
 #Los usuarios seran los que creen sus post o realicen comentarios de los post
 class Usuario(models.Model):
-    id = models.AutoField(unique=True)
+    id_usuario = models.IntegerField(primary_key=int)
     nombre = models.CharField(max_length=40)
     usuario = models.CharField(max_length=40)
     password = models.CharField(max_length=20)
@@ -11,45 +12,46 @@ class Usuario(models.Model):
     lastlogin = models.DateTimeField()
     dateregistro = models.DateTimeField()
     datecupleanho = models.DateTimeField()
-    estado = models.models.IntegerField()
+    estado = models.IntegerField() 
+    #Activo - Inactivo - Bloqueado - Eliminado ...
     
 #Existen categorias de post
 class Categoria(models.Model):
-    id = models.AutoField(unique=True)
+    id_categoria = models.IntegerField(primary_key=int)
     nombre = models.CharField(max_length=40)
     parent = models.IntegerField()
     
 #Post que publicaran los usuarios
 class Post(models.Model):
-    id = models.AutoField(unique=True)
-    UserID = models.IntegerField()
-    titulo = models.CharField(max_length=40)
-    body = models.CharField()
+    #id_post = models.IntegerField(primary_key=int)
+    autor = models.IntegerField()
+    titulo = models.CharField(max_length=200)
+    body = models.TextField()
     category = models.IntegerField()
     tags = models.IntegerField()
     fechapublicacion = models.DateField()
     ultimaactualizacion = models.DateField()
-    imagen = models.CharField() #   ----- VER COMO SUBIR FOTOS ----
+    imagen = models.CharField(max_length=200) #   ----- VER COMO SUBIR FOTOS ----
     estado = models.IntegerField() #inicio - publicado - baneado
     
     
 #Recordatorios para hacer mas facil la busqueda
 class Tags(models.Model):
-    id = models.AutoField(unique=True)
-    tag = models.CharField()
-    Relacion = models.CharField()
+    id_tags = models.IntegerField(primary_key=int)
+    tag = models.CharField(max_length=200)
+    relacion = models.CharField(max_length=200)
     
 #Comentarios que realizaran los usuarios sobre los post
 class Comentarios(models.Model):
-    id = models.AutoField()
-    UserId = models.IntegerField()
-    PostId = models.IntegerField()   
-    Titulo = models.CharField()
+    id_comentarios = models.IntegerField(primary_key=int)
+    userId = models.IntegerField()
+    postId = models.IntegerField()   
+    titulo = models.CharField(max_length=200)
     fecha = models.DateField()
 
 #Estados en los cuales puede estar el usuario 
 #Activo - Inactivo - Bloqueado - Eliminado ...
 class Estado(models.Model):
-    id = models.AutoField(unique=True)
-    nombre = models.CharField()
+    id_estado = models.IntegerField(primary_key=int)
+    nombre = models.CharField(max_length=100)
     
