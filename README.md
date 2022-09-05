@@ -15,3 +15,11 @@ Un formulario para insertar datos a todas las clases de tu models.
 Un formulario para buscar algo en la BD
 Readme que indique el orden en el que se prueban las cosas y/o donde están las
 funcionalidades.
+
+------------------------------------
+BD
+===============
+usuario : admin
+clave: XXXXX
+------------------------------------
+
