@@ -13,14 +13,22 @@ def inicio(request):
 
     return render(request, 'index.html', {})
 
+def usuario(request):
 
-#
-#ef BlogCRUD(request):
-#
-#   return render(request, 'index.html', {})
-#
-#
-#
-#ef BlogBuscar(request):
-#
-#   return render(request, 'index.html', {})
+    return render(request, 'index.html', {})
+
+def tags(request):
+
+    return render(request, 'index.html', {})
+
+def categoria(request):
+
+    return render(request, 'index.html', {})
+
+def post(request):
+
+    return render(request, 'index.html', {})
+
+def comentarios(request):
+
+    return render(request, 'index.html', {})

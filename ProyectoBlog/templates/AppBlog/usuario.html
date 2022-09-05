@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    CRUD de Usuarios
+{% endblock %}
+
+{% block Inicio %}
+aqui ira el CRUD de Usuarios
+
+Nombre {{ usuario.nombre }}
+Usuario {{ usuario.usuario }}
+password {{ usuario.password }}
+email {{ usuario.email }}
+lastlogin {{ usuario.lastlogin }}
+dateregistro {{ usuario.dateregistro }}
+datecupleanho {{ usuario.datecupleanho }}
+estado {{ usuario.estado }}
+
+
+<!--
+id_usuario = models.IntegerField(primary_key=int)
+nombre = models.CharField(max_length=40)
+usuario = models.CharField(max_length=40)
+password = models.CharField(max_length=20)
+email = models.EmailField()
+lastlogin = models.DateTimeField()
+dateregistro = models.DateTimeField()
+datecupleanho = models.DateTimeField()
+estado = models.IntegerField() 
+-->
+{% endblock %}
