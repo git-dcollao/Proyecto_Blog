@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Busqueda de Usuarios
+{% endblock %}
+
+{% block inicio %}
+
+    <form action="/AppBlog/busqueda_usuario_post" method="GET">
+        {% csrf_token %}
+
+            {{ form.as_p }}
+        
+            <input type="submit" value="Buscar">
+
+    </form>
+<!-- 
+    {% for usuario in usuarios %}
+        El nombre del usuario es: {{ usuario.nombre }} 
+        - el usuario es: {{ usuario.usuario }}
+        - el password es : {{ usuario.password }}
+        - el mail es: {{ usuario.password }}
+        - el lastlogin es: {{ usuario.lastlogin }}
+        - el dateregistro es: {{ usuario.dateregistro }}
+        - el datecupleanho es: {{ usuario.datecupleanho }}
+        - el estado es: {{ usuario.estado }}<br>
+    {% endfor %}
+-->
+{% endblock %}

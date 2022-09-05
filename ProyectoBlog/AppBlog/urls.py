@@ -1,6 +1,7 @@
 from django.urls import path
 
-from AppBlog.views import * #usuario, tags, categoria, post, comentarios
+from AppBlog.views import * 
+#usuario, tags, categoria, post, comentarios
 
 urlpatterns = [
     path('', inicio, name='AppBlogInicio'),
@@ -9,6 +10,13 @@ urlpatterns = [
     path('categoria/', categoria, name='AppBlogCategoria'),
     path('post/', post, name='AppBlogPost'),
     path('comentarios/', comentarios, name='AppBlogComentarios'),
+    path('usuario_formulario/', usuario_formulario, name='AppBlogUsuarioFormulario'),
+    path('busqueda_usuario/', busqueda_usuario, name='AppBlogBusquedaUsuario'),
+    path('busqueda_usuario_post/', busqueda_usuario_post, name='AppBlogBusquedaUsuarioPost'),
+   # path('categoria_formulario/', categoria_formulario, name='AppBlogCategoriaFormulario'),
+   # path('tags_formulario/', tags_formulario, name='AppBlogTagsFormulario'),
+    
+    
     #path('BlogNew/', BlogCRUD, name='AppBlogCrud'),
     #path('blogBuscar/', BlogBuscar, name='AppBlogBuscar'),
    # path('curso_formulario/', curso_formulario, name='AppCoderCursoFormulario'),

@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Formulario de Usuarios
+{% endblock %}
+
+{% block inicio %}
+
+    {% for usuario in usuarios %}
+        El nombre del usuario es: {{ usuario.nombre }} 
+        - el usuario es: {{ usuario.usuario }}
+        - el password es : {{ usuario.password }}
+        - el mail es: {{ usuario.password }}
+        - el lastlogin es: {{ usuario.lastlogin }}
+        - el dateregistro es: {{ usuario.dateregistro }}
+        - el datecupleanho es: {{ usuario.datecupleanho }}
+        - el estado es: {{ usuario.estado }}<br>
+    {% endfor %}
+
+{% endblock %}
