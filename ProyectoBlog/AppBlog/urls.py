@@ -11,12 +11,14 @@ urlpatterns = [
     path('post/', post, name='AppBlogPost'),
     path('comentarios/', comentarios, name='AppBlogComentarios'),
     path('usuario_formulario/', usuario_formulario, name='AppBlogUsuarioFormulario'),
+    path('categoria_formulario/', categoria_formulario, name='AppBlogCategoriaFormulario'),
+    path('tag_formulario/', tag_formulario, name='AppBlogTagFormulario'),
     path('busqueda_usuario/', busqueda_usuario, name='AppBlogBusquedaUsuario'),
     path('busqueda_usuario_post/', busqueda_usuario_post, name='AppBlogBusquedaUsuarioPost'),
+    
+    
    # path('categoria_formulario/', categoria_formulario, name='AppBlogCategoriaFormulario'),
-   # path('tags_formulario/', tags_formulario, name='AppBlogTagsFormulario'),
-    
-    
+   # path('tags_formulario/', tags_formulario, name='AppBlogTagsFormulario'),    
     #path('BlogNew/', BlogCRUD, name='AppBlogCrud'),
     #path('blogBuscar/', BlogBuscar, name='AppBlogBuscar'),
    # path('curso_formulario/', curso_formulario, name='AppCoderCursoFormulario'),

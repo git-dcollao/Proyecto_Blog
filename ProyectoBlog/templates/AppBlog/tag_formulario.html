@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Formulario de Tags
+{% endblock %}
+
+{% block inicio %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+            {{ form.as_p }}
+        
+            <input type="submit" value="Enviar">
+
+    </form>
+
+    {% for tag in tags %}
+        El nombre del tag es: {{ tag.tag }} 
+        - la relación es: {{ tag.relacion }}
+        <br>
+    {% endfor %}
+
+{% endblock %}

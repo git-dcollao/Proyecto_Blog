@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from AppBlog.models import *
-from AppBlog.forms import UsuarioForm, BusquedaUsuarioForm
+from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm
 
 
 # Crear vista de busqueda con formulario
@@ -21,11 +21,10 @@ def busqueda_usuario_post(request):
     
     return render(request, 'AppBlog/usuario_filtrado.html', contexto)
     
-    
 def busqueda_usuario(request):
     
     contexto = {
-        'form': BusquedaUsuarioForm(),
+        'form': BusquedaUsuarioForms(),
     }
     
     return render(request, 'AppBlog/busqueda_usuario.html', contexto)
@@ -65,6 +64,62 @@ def usuario_formulario(request):
     }
     
     return render(request, 'AppBlog/usuario_formulario.html', contexto)
+
+def categoria_formulario(request):
+    
+    if  request.method == 'POST':
+        mi_formulario = CategoriaForm(request.POST)
+        
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            categoria1 = Categoria(nombre=data.get('nombre'),
+                               parent=data.get('parent'))
+            categoria1.save()
+            
+            return redirect('AppBlogCategoriaFormulario')
+        
+    
+        else:
+            mensaje = 'Ocurrio un error no se pudo guardar los datos'
+
+        
+    categoria = Categoria.objects.all()
+    
+    contexto = {
+        'form': CategoriaForm(),
+        'categoria': categoria
+    }
+    
+    return render(request, 'AppBlog/categoria_formulario.html', contexto)
+
+def tag_formulario(request):
+    
+    if  request.method == 'POST':
+        mi_formulario = TagsForm(request.POST)
+        
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            tag1 = Tags(tag=data.get('tag'),
+                        relacion=data.get('relacion'))
+            tag1.save()
+            
+            return redirect('AppBlogTagFormulario')
+        
+    
+        else:
+            mensaje = 'Ocurrio un error no se pudo guardar los datos'
+
+        
+    tag = Tags.objects.all()
+    
+    contexto = {
+        'form': TagsForm(),
+        'tag': tag
+    }
+    
+    return render(request, 'AppBlog/tag_formulario.html', contexto)
 
 # Create your views here.
 
