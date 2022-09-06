@@ -101,7 +101,7 @@ def tag_formulario(request):
         if mi_formulario.is_valid():
             data = mi_formulario.cleaned_data
             
-            tag1 = Tags(tag=data.get('tag'),
+            tag1 = tags(tag=data.get('tag'),
                         relacion=data.get('relacion'))
             tag1.save()
             
