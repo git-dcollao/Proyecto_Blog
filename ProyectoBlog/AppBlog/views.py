@@ -73,8 +73,8 @@ def categoria_formulario(request):
         if mi_formulario.is_valid():
             data = mi_formulario.cleaned_data
             
-            categoria1 = Categoria(nombre=data.get('nombre'),
-                               parent=data.get('parent'))
+            categoria1 = Categoria(nombre=data.get('nombre'), 
+                                   parent=data.get('parent'))
             categoria1.save()
             
             return redirect('AppBlogCategoriaFormulario')
@@ -88,7 +88,7 @@ def categoria_formulario(request):
     
     contexto = {
         'form': CategoriaForm(),
-        'categoria': categoria
+        'categorias': categoria
     }
     
     return render(request, 'AppBlog/categoria_formulario.html', contexto)
@@ -101,7 +101,7 @@ def tag_formulario(request):
         if mi_formulario.is_valid():
             data = mi_formulario.cleaned_data
             
-            tag1 = tags(tag=data.get('tag'),
+            tag1 = Tags(tag=data.get('tag'),
                         relacion=data.get('relacion'))
             tag1.save()
             
@@ -116,7 +116,7 @@ def tag_formulario(request):
     
     contexto = {
         'form': TagsForm(),
-        'tag': tag
+        'tags': tag
     }
     
     return render(request, 'AppBlog/tag_formulario.html', contexto)
