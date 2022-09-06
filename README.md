@@ -22,4 +22,20 @@ BD
 usuario : admin
 clave: XXXXX
 ------------------------------------
+<h1>FUNCIONALIDADES </h1>
+===============
+<h2>MENU - Inicio</h2>
+Direcciona a la pagina principal
+
+<h2>MENU - Formulario_Usuario</h2>
+Ingreso de usuarios al sistema
+
+<h2>MENU - Formulario_Categoria</h2>
+Ingresos de categorias al sistema
+
+<h2>MENU - Formulario_Tag</h2>
+Ingresos de Tags
+
+<h2>MENU - Buscar_Usuario</h2>
+Busqueda de usuario ingresado
 
