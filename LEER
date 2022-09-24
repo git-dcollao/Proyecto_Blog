@@ -4,29 +4,48 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 
-
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ENTORNO VIRTUAL
--------------------------------
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 pip install virtualenv
 virtualenv --version
 virtualenv <nombre del entorno a crear>
 env\Scripts\activate    #Activar el entorno virtual  OJO Lo llame <env>
 venv\Scripts\activate
 
-
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 GIT
----------------------------------
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# muestra los archivos o renombramientos que se han realizado(LOCAL)
 git status
+#guarda (LOCAL)
 git commit -m "Crear vista entregable con su html"
-git push
-git checkout -b curso
-git add .
-git commit -m "Ccrear la ruta de curso"
 
+git checkout -b curso
+#Se sube todo lo que esta en el proyecto y que se ha modificado (LOCAL)
+git add .
+
+git commit -m "Ccrear la ruta de curso"
+==============================================================
+# a que github esta enazado el proyecto
+git remote -v
+
+#subir los cambios  de internet(REMOTO)
+git push
+
+#bajar los cambios de internet(REMOTO)
+git pull
+===============================================================
+#para poder clonar un git
 dentro de la carpeta >> git clone https://el link copiado desde git
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 #Instala las librerias que estan en el archivo
 pip install -r requirements.txt
 #Muestra lasl ibrerias que estan instaladas
 pip freeze
 
+#para enviar a el archivo txt las librerias instaladas
+pip freeze > requirements.txt
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
