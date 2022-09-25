@@ -47,6 +47,8 @@ class EstadoForm(forms.Form):
     
 #=====================================================
 # CLASES DE BUSQUEDAS
+#=====================================================
+#Busqueda de usaurios 
 class BusquedaUsuarioForms(forms.Form):
     usuario = forms.CharField()
     

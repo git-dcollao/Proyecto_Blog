@@ -15,11 +15,17 @@ class Usuario(models.Model):
     estado = models.IntegerField() 
     #Activo - Inactivo - Bloqueado - Eliminado ...
     
+    def __str__(self):
+        return f"Usuario: {self.nombre}, {self.usuario}, {self.password}, {self.email}, {self.lastlogin}, {self.dataregistro}, {self.datecupleanho}, {self.estado}"
+    
 #Existen categorias de post
 class Categoria(models.Model):
     #id_categoria = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=40)
     parent = models.IntegerField()
+    
+    def __str__(self):
+        return f"Categoria: {self.nombre}, {self.parent}"
     
 #Post que publicaran los usuarios
 class Post(models.Model):
@@ -32,14 +38,19 @@ class Post(models.Model):
     fechapublicacion = models.DateField()
     ultimaactualizacion = models.DateField()
     imagen = models.CharField(max_length=200) #   ----- VER COMO SUBIR FOTOS ----
-    estado = models.IntegerField() #inicio - publicado - baneado
+    estado = models.IntegerField() #borrador - publicado - baneado
     
-    
+    def __str__(self):
+        return f"Post: {self.autor}, {self.titulo}, {self.body}, {self.category}, {self.tags}, {self.fechapublicacion}, {self.ultimaactualizacion}, {self.imagen}, {self.estado}"
+        
 #Recordatorios para hacer mas facil la busqueda
 class Tags(models.Model):
     #id_tags = models.IntegerField(unique=True)
     tag = models.CharField(max_length=200)
     relacion = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return f"Tags: {self.tag}, {self.relacion}"
     
 #Comentarios que realizaran los usuarios sobre los post
 class Comentarios(models.Model):
@@ -49,9 +60,15 @@ class Comentarios(models.Model):
     titulo = models.CharField(max_length=200)
     fecha = models.DateField()
 
+    def __str__(self):
+        return f"Comentario: {self.userId}, {self.postId}, {self.titulo}, {self.fecha}"
+    
 #Estados en los cuales puede estar el usuario 
 #Activo - Inactivo - Bloqueado - Eliminado ...
 class Estado(models.Model):
     #id_estado = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return f"Estado: {self.nombre}"
     

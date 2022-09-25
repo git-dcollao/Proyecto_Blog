@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Estado
+{% endblock %}
+
+{% block inicio %}
+    <!--
+    <form action="" method="POST">
+    {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enviar">
+    </form>
+    -->
+
+    {% for estado in estados %}
+        El nombre del estado es: {{ estado.nombre }} 
+       
+        <a href="{% url 'AppBlogEliminarEstado' estado.nombre %}">-ELIMINAR -</a>
+        <a href="{% url 'AppBlogEditarEstado' estado.nombre %}">- EDITAR -</a>
+        
+        <br>
+    {% endfor %}
+
+{% endblock %}

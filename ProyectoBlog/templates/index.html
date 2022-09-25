@@ -19,12 +19,20 @@
     <body>
         <!-- Responsive navbar-->
         {% include 'base/navigation.html' %}
+
+        <!-- Sector para mensajes de las respeustas GET-POST-PUSH-PULL -->
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+
         <!-- Page content-->
         {% block inicio %}
             Este es el block de inicio
         {% endblock %}
+
         <!-- Footer-->
         {% include 'base/footer.html' %}
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
