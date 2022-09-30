@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 
 {% block title %}
-{{ titulo_form }}
+    {{ nombre_form }}
 {% endblock %}
 
 {% block inicio %}
@@ -13,9 +13,8 @@
 
         {{ form.as_p }}
 
-        <input type="submit" value="{{ boton_envio }}">
+        <input type="submit" value="{{ nombre_form }}">
 
     </form>
-
 
 {% endblock %}

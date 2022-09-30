@@ -11,8 +11,8 @@ from django.shortcuts import render, redirect
 
 from AppBlog.models import *
 from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm
-
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 #=====================================================
 # Crear vista de busqueda con formulario
 #=====================================================
@@ -27,14 +27,18 @@ def busqueda_usuario_post(request):
     }
     
     return render(request, 'AppBlog/usuario_filtrado.html', contexto)
+
 # Muestra todos los usaurios 
+@login_required
 def busqueda_usuario(request):
     
     contexto = {
         'form': BusquedaUsuarioForms(),
+        'titulo_form': 'Usuario Formulario',
+        'boton_envio': 'Actualizar'
     }
     
-    return render(request, 'AppBlog/busqueda_usuario.html', contexto)
+    return render(request, 'base_formulario.html', contexto)
   
 
 #=====================================================    
@@ -73,6 +77,9 @@ def usuario_formulario(request):
     }
     
     return render(request, 'AppBlog/usuario_formulario.html', contexto)
+
+def editar_usuario():
+    
 
 def categoria_formulario(request):
     
@@ -138,8 +145,10 @@ def tag_formulario(request):
     
 def estado(request):
     estados = Estado.objects.all()
+    
     contexto = {
-        'estados': estados
+        'estados_list': estados
+        
     }
     
     return render(request, 'AppBlog/estado.html', contexto)
@@ -162,10 +171,12 @@ def estado_formulario(request):
             
     
     contexto = {
-        'form' : EstadoForm()
+        'form' : EstadoForm(),
+        'titulo_form': 'Estado Formulario',
+        'boton_envio': 'Crear'
     }
 
-    return render(request, 'AppBlog/estado_formulario.html', contexto)
+    return render(request, 'base_formulario.html', contexto)
 
 def eliminar_estado(request, nombre):
     estado_eliminar = Estado.objects.get(nombre=nombre)
@@ -202,9 +213,11 @@ def editar_estado(request, nombre):
             initial={
                 "nombre": estado_editar.nombre
             }
-        )
+        ),
+        'titulo_form': 'Estado Formulario',
+        'boton_envio': 'Actualizar'
     }
-    return render(request, 'AppBlog/estado_formulario.html', contexto)
+    return render(request, 'base_formulario', contexto)
 
 
 
@@ -241,3 +254,8 @@ def usuario(request):
 def tags(request):
 
     return render(request, 'index.html', {})
+
+#no lo he hecho para ver todos los post pero que sean restringido solo usuarios logeados
+class postList(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'AppBlog/post.html' 
