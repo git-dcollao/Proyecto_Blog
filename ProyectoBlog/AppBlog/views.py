@@ -78,9 +78,6 @@ def usuario_formulario(request):
     
     return render(request, 'AppBlog/usuario_formulario.html', contexto)
 
-def editar_usuario():
-    
-
 def categoria_formulario(request):
     
     if  request.method == 'POST':
