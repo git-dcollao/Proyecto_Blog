@@ -9,5 +9,5 @@ urlpatterns = [
     path('registro/', register, name='UserBlogRegister'),
     path('logout/', LogoutView.as_view(template_name='USerBlog/logout.html'), name='UserBlogLogout'),
     path('editar/', editar_usuario, name='UserBlogEditar'),
-    
+    path('avatar/', upload_avatar, name='UserBlogAvatar'),
 ]

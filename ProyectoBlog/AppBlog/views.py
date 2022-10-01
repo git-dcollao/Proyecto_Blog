@@ -114,7 +114,7 @@ def tag_formulario(request):
         if mi_formulario.is_valid():
             data = mi_formulario.cleaned_data
             
-            tag1 = Tags(tag=data.get('tag'),
+            tag1 = Tag(tag=data.get('tag'),
                         relacion=data.get('relacion'))
             tag1.save()
             
@@ -125,7 +125,7 @@ def tag_formulario(request):
             mensaje = 'Ocurrio un error no se pudo guardar los datos'
 
         
-    tag = Tags.objects.all()
+    tag = Tag.objects.all()
     
     contexto = {
         'form': TagsForm(),

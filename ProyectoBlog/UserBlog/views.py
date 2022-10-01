@@ -1,11 +1,13 @@
-from distutils.command.clean import clean
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
-from UserBlog.forms import UserRegisterForm 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+
+from UserBlog.forms import UserRegisterForm, AvatarForm
+from UserBlog.models import Avatar
+
+
 
 # Create your views here.
 def login_request(request):
@@ -99,4 +101,28 @@ def editar_usuario(request):
 
     return render(request, 'base_formulario.html', contexto)
 
+def upload_avatar(request):
+    if request.method == "POST":
     
+        formulario = AvatarForm(request.POST, request.FILES)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            avatar = Avatar.objects.filter(user=data.get("usuario"))
+        
+            if len(avatar) > 0:
+                avatar = avatar[0]
+                avatar.imagen = formulario.cleaned_data["imagen"]
+                avatar.save()
+
+            else:
+                avatar = Avatar(user=data.get("user"), imagen=data.get("imagen"))
+                avatar.save() 
+        return redirect("AppBlogInicio")    
+             
+    contexto = {
+        "form": AvatarForm(),
+        'boton_envio': 'Crear'
+    }    
+    
+    return render(request, "base_formulario.html", contexto)

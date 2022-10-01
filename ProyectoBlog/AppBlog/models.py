@@ -44,7 +44,7 @@ class Post(models.Model):
         return f"Post: {self.autor}, {self.titulo}, {self.body}, {self.category}, {self.tags}, {self.fechapublicacion}, {self.ultimaactualizacion}, {self.imagen}, {self.estado}"
         
 #Recordatorios para hacer mas facil la busqueda
-class Tags(models.Model):
+class Tag(models.Model):
     #id_tags = models.IntegerField(unique=True)
     tag = models.CharField(max_length=200)
     relacion = models.CharField(max_length=200)
@@ -53,7 +53,7 @@ class Tags(models.Model):
         return f"Tags: {self.tag}, {self.relacion}"
     
 #Comentarios que realizaran los usuarios sobre los post
-class Comentarios(models.Model):
+class Comentario(models.Model):
     #id_comentarios = models.IntegerField(unique=True)
     userId = models.IntegerField()
     postId = models.IntegerField()   
