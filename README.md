@@ -8,7 +8,6 @@ El objetivo general de esta publicación es el desarrollo de un WebBlog utilizan
 
 <h6>Autores</h6>
 <h6>Daniel Collao</h6>
-<h6>Javier Fornari</h6>
 
 Para el uso de la base de datos el usuario es admin y la clave: XXXXX
 
