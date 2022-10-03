@@ -6,9 +6,8 @@ El tipo de interacción permitirá lograr conectar información entre usuarios m
 
 El objetivo general de esta publicación es el desarrollo de un WebBlog utilizando el lenguaje de programación Python y el framework Django a través del uso de un patrón MVT.
 
-<h6>Autores</h6>
+<h6>Autor</h6>
 <h6>Daniel Collao</h6>
-<h6>Javier Fornari</h6>
 
 Para el uso de la base de datos el usuario es admin y la clave: XXXXX
 
