@@ -15,7 +15,9 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+#Para subir imagenes en el template
+TEMPLATES_DIR = os.path.join(BASE_DIR,"template")
+STATIC_DIR = os.path.join(BASE_DIR,"static")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     "AppBlog",
     "UserBlog",
 ]
-
+#"fontawesomefree",
+    
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -50,8 +53,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    #"modernizr.middleware.ModenizrMiddleware",
 ]
-
 ROOT_URLCONF = "ProyectoBlog.urls"
 
 TEMPLATES = [
@@ -113,6 +116,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [STATIC_DIR, ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -123,3 +127,12 @@ LOGIN_URL = 'UserBlogLogin'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Agregar para envio de mails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'daniel.collao@gmail.com'
+EMAIL_HOST_PASSWORD = 'evkcpekdtcwzqnrm'
+EMAIL_USE_TLS = True

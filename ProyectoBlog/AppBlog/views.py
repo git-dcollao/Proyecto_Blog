@@ -13,6 +13,12 @@ from AppBlog.models import *
 from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
 #=====================================================
 # Crear vista de busqueda con formulario
 #=====================================================
@@ -216,9 +222,6 @@ def editar_estado(request, nombre):
     }
     return render(request, 'base_formulario', contexto)
 
-
-
-
 #Formulario de categoria 
 def categoria(request):
     estados = Categoria.objects.all()
@@ -242,7 +245,7 @@ def comentarios(request):
 
 def inicio(request):
 
-    return render(request, 'index.html', {})
+    return render(request, 'inicio.html', {})
 
 def usuario(request):
 
@@ -251,6 +254,37 @@ def usuario(request):
 def tags(request):
 
     return render(request, 'index.html', {})
+
+#-------------------------------------------------------------------------
+#-------------------------------------------------------------------------
+#                       LISTOS
+#-------------------------------------------------------------------------
+#-------------------------------------------------------------------------
+
+def aboutme(request):
+    
+    return render(request, 'aboutme.html', {})
+
+def contacto(request):
+	if request.method == "POST":
+		message_name = request.POST['contact-name']
+		message_email = request.POST['contact-email']
+		message = request.POST['contact-message']
+
+		# send an email
+		send_mail(
+			message_name, # subject
+			message, # message
+			message_email, # from email
+			['daniel.collao@gmail.com'], # To Email
+			)
+
+		return render(request, 'contacto.html', {'message_name': message_name})
+
+	else:
+		return render(request, 'contacto.html', {})
+
+
 
 #no lo he hecho para ver todos los post pero que sean restringido solo usuarios logeados
 class postList(LoginRequiredMixin, ListView):

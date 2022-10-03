@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!-- Template obtenido desde https://new.axilthemes.com/demo/template/blogar/home-lifestyle-blog-dark.html SOLO PARA PROYECTO FINAL (USO PERSONAL)-->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns 
+csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle 
+csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang="en">
+    <head> 
+        {% load static %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <!-- {% block title %}Blog Coderhouse - CODE31095 - Daniel Collao{% endblock %} -->
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href=" {% static '/assets/LogoDC-V2.ico' %} ">
+    <link rel="icon" href=" {% static '/assets/LogoDC-V2.ico' %} ">
+
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
+</head>
+
+<body class="active-dark-mode">
+    <div class="main-wrapper">
+        <div class="mouse-cursor cursor-outer" style="visibility: visible; transform: translate(660px, 287px);"></div>
+        <div class="mouse-cursor cursor-inner" style="visibility: visible; transform: translate(660px, 287px);"></div>
+
+        
+        <!-- Start Header -->
+        <header class="header axil-header header-style-4  header-light header-sticky ">
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-xl-8 col-lg-4 col-md-4 col-12">
+                            <div class="wrapper d-block d-sm-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                <div class="logo">
+                                    <a href="">
+                                        <img class="dark-logo" src="{% static 'media/web/lifestyle-post-01.jpg' %} " alt="logo">
+                                    </a>
+                                </div>
+                                <div class="mainmenu-wrapper d-none d-xl-block">
+                                    <nav class="mainmenu-nav">
+                                        <!-- Start Mainmanu Nav -->
+                                        {% include 'base/navigation-new.html' %}
+                                        <!-- End Mainmanu Nav -->
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-8 col-md-8 col-12">
+                            <div class="header-search d-flex flex-wrap align-items-center justify-content-center justify-content-md-end">
+                               
+                                {% include 'base/nav-usuario.html' %}
+                                <!-- Start Hamburger Menu  -->
+                                <div class="hamburger-menu d-block d-xl-none">
+                                    <div class="hamburger-inner">
+                                        <div class="icon"><i class="fal fa-bars"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Hamburger Menu  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Start Header -->
+
+        <!-- Start Mobile Menu Area  -->
+        <div class="popup-mobilemenu-area">
+            <div class="inner">
+                <div class="mobile-menu-top">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img class="dark-logo" src="{% static 'assets/Logo DC.jpg' %} " alt="Logo Images">
+                        </a>
+                    </div>
+                    <div class="mobile-close">
+                        <div class="icon">
+                            <i class="fal fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Mobile Menu Area  -->
+
+        <!-- Start Banner Area -->
+        <h1 class="d-none">Blog - Tecnologia</h1>
+        <div class="slider-area bg-color-grey ptb--80">
+            <div class="axil-slide slider-style-2 plr--135 plr_lg--30 plr_md--30 plr_sm--30">
+                <div class="row row--10">
+                    <div class="col-lg-12 col-xl-6 col-md-12 col-12">
+                        <!-- Start Post Grid  -->
+                        <div class="content-block post-grid post-grid-transparent post-overlay-bottom">
+                            <div class="post-thumbnail">
+                                <a href="post-details.html">
+                                    <img src="/media/post/lifestyle-post-01.jpg " alt="Post Images">
+                                </a>
+                            </div>
+                            <div class="post-grid-content">
+                                <div class="post-content">
+                                    <div class="post-cat">
+                                        <div class="post-cat-list">
+                                            <a class="hover-flip-item-wrapper" href="#">
+                                                <span class="hover-flip-item">
+                                                    <span data-text="FEATURED POST">FEATURED POST</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h3 class="title"><a href="/post-details.html">Fashion portrait of young businessman
+                                            handsome model man in casual cloth.</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start Post Grid  -->
+                    </div>
+                    <div class="col-lg-12 col-xl-6 col-md-12 col-12 mt_lg--20 mt_md--20 mt_sm--20">
+                        <div class="row row--10">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                <!-- Start Post Grid  -->
+                                <div class="content-block post-grid post-grid-transparent post-grid-small post-overlay-bottom">
+                                    <div class="post-thumbnail">
+                                        <a href="/post-details.html">
+                                            <img src="/media/post/lifestyle-post-03.jpg" alt="Post Images">
+                                        </a>
+                                    </div>
+                                    <div class="post-grid-content">
+                                        <div class="post-content">
+                                            <div class="post-cat">
+                                                <div class="post-cat-list">
+                                                    <a class="hover-flip-item-wrapper" href="#">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="TRAVEL">TRAVEL</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <h5 class="title"><a href="/post-details.html">The beautiful girl standing on
+                                                    a balcony of apartments looking at the seaside. </a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Start Post Grid  -->
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 mt_mobile--20 col-12">
+                                <!-- Start Post Grid  -->
+                                <div class="content-block post-grid post-grid-transparent post-grid-small post-overlay-bottom">
+                                    <div class="post-thumbnail">
+                                        <a href="/post-details.html">
+                                            <img src="/media/post/lifestyle-post-04.jpg" alt="Post Images">
+                                        </a>
+                                    </div>
+                                    <div class="post-grid-content">
+                                        <div class="post-content">
+                                            <div class="post-cat">
+                                                <div class="post-cat-list">
+                                                    <a class="hover-flip-item-wrapper" href="#">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="TRAVEL">TRAVEL</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <h5 class="title"><a href="/post-details.html">A good traveler has no fixed
+                                                    plans, and is not intent on arriving. </a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Start Post Grid  -->
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt--20">
+                                <!-- Start Post Grid  -->
+                                <div class="content-block post-grid post-grid-transparent post-grid-small post-overlay-bottom">
+                                    <div class="post-thumbnail">
+                                        <a href="/post-details.html">
+                                            <img src="/media/post/lifestyle-post-05.jpg" alt="Post Images">
+                                        </a>
+                                    </div>
+                                    <div class="post-grid-content">
+                                        <div class="post-content">
+                                            <div class="post-cat">
+                                                <div class="post-cat-list">
+                                                    <a class="hover-flip-item-wrapper" href="#">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="TRAVEL">TRAVEL</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <h5 class="title"><a href="/post-details.html">A good traveler has no fixed
+                                                    plans, and is not intent on arriving.</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Start Post Grid  -->
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt--20">
+                                <!-- Start Post Grid  -->
+                                <div class="content-block post-grid post-grid-transparent post-grid-small post-overlay-bottom">
+                                    <div class="post-thumbnail">
+                                        <a href="/post-details.html">
+                                            <img src="/media/post/lifestyle-post-02.jpg" alt="Post Images">
+                                        </a>
+                                    </div>
+                                    <div class="post-grid-content">
+                                        <div class="post-content">
+                                            <div class="post-cat">
+                                                <div class="post-cat-list">
+                                                    <a class="hover-flip-item-wrapper" href="#">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="ACCESSORY">ACCESSORY</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <h5 class="title"><a href="/post-details.html">Fashion portrait of young
+                                                    businessman handsome model man in casual cloth.</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Start Post Grid  -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner Area -->
+
+        <!-- Start Footer Area  -->
+        
+        <!-- End Footer Area  -->
+
+        <!-- Start Back To Top  -->
+        <a id="backto-top"></a>
+        <!-- End Back To Top  -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+    <!-- Modernizer JS -->
+    <script src=" {% static 'js/modernizr.min.js' %} "></script>
+    <!-- jQuery JS -->
+    <script src=" {% static 'js/jquery.js' %} "></script>
+    <!-- Bootstrap JS -->
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/slick.min.js' %} "></script>
+    <script src=" {% static 'js/tweenmax.min.js' %} "></script>
+    <script src=" {% static 'js/js.cookie.js' %} "></script>
+    <script src=" {% static 'js/jquery.style.switcher.js' %} "></script>
+
+
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</body></html>

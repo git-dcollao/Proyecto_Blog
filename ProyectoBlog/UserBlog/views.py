@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
@@ -12,7 +12,7 @@ from UserBlog.models import Avatar
 # Create your views here.
 def login_request(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
+        form = AuthenticationForm(request, data = request.POST)
     
         if form.is_valid():
             data = form.cleaned_data
@@ -34,22 +34,23 @@ def login_request(request):
         return redirect('AppBlogInicio')
             
     contexto = {
-        'form' : AuthenticationForm()
-        ,'titulo_form' : 'Login'
+        'form' : AuthenticationForm(),
+        'titulo_form' : 'Login'
         ,'boton_envio' : 'Enviar'
     }
     
     return render(request, 'base_formulario.html', contexto)
 
+#base_formulario.html
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.post, request.FILES)
+        form = UserRegisterForm(request.POST, request.FILES)
         
         if form.is_valid():
             user = form.save()
             
-            #avatar = Avatar(user=user, imagen=form.cleaned_data.get('imagen'))
-            #avatar.save()
+            avatar = Avatar(user=user, imagen=form.cleaned_data.get('imagen'))
+            avatar.save()
             
             messages.info(request, 'Tu usuario fue registrado satisfactoriamente!')
             
@@ -61,10 +62,10 @@ def register(request):
     contexto = {
         #'form': UserCreationForm(),
         'form': UserRegisterForm(), 
-        'nombre_form': 'Registro'
+        'nombre_form': 'Registrarse',
     }
     
-    return render(request, 'UserBlog/login.html', contexto)
+    return render(request, 'base_formulario.html', contexto)
 
 @login_required
 def editar_usuario(request):
@@ -96,6 +97,7 @@ def editar_usuario(request):
                 'email': usuario.email,
                 'last_name': usuario.last_name
                 }),
+        'nombre_form': 'Editar Registro',
         'boton_envio': 'Registro',
     }
 

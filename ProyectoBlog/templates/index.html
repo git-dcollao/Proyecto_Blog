@@ -1,41 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<!-- Template obtenido desde https://new.axilthemes.com/demo/template/blogar/home-lifestyle-blog-dark.html SOLO PARA PROYECTO FINAL (USO PERSONAL)-->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns 
+csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle 
+csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang="en">
+    <head> 
         {% load static %}
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>
-            {% block title %}
-            Blog Coderhouse - CODE31095
-            {% endblock %}
-        </title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        {% include 'base/navigation.html' %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <!-- {% block title %}Blog Coderhouse - CODE31095 - Daniel Collao{% endblock %} -->
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href=" {% static '/assets/LogoDC-V2.ico' %} ">
+    <link rel="icon" href=" {% static '/assets/LogoDC-V2.ico' %} ">
 
-        <!-- Sector para mensajes de las respeustas GET-POST-PUSH-PULL -->
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
+    <!-- CSS
+    ============================================ -->
 
-        <!-- Page content-->
-        {% block inicio %}
-            Este es el block de inicio
-        {% endblock %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
+</head>
 
-        <!-- Footer-->
-        {% include 'base/footer.html' %}
+<body class="active-dark-mode">
+    <div class="main-wrapper">
+        <div class="mouse-cursor cursor-outer" style="visibility: visible; transform: translate(660px, 287px);"></div>
+        <div class="mouse-cursor cursor-inner" style="visibility: visible; transform: translate(660px, 287px);"></div>
+
         
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'js/scripts.js' %}"></script>
-    </body>
-</html>
+        <!-- Start Header -->
+        {% include 'base/header.html' %}
+        <!-- Start Header -->
+
+        <!-- Start Mobile Menu Area  -->
+        <div class="popup-mobilemenu-area">
+            <div class="inner">
+                <div class="mobile-menu-top">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img class="dark-logo" src="{% static 'assets/Logo DC.jpg' %} " alt="Logo Images">
+                        </a>
+                    </div>
+                    <div class="mobile-close">
+                        <div class="icon">
+                            <i class="fal fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Mobile Menu Area  -->
+
+        
+
+        <!-- Start Area Contenedor   -->
+        {% block inicio %}
+            
+        {% endblock %} 
+        
+        <!-- End Area Contenedor   -->
+
+        <!-- Start Footer Area  -->
+        {% include 'base/footer.html' %}
+        <!-- End Footer Area  -->
+
+        <!-- Start Back To Top  -->
+        <a id="backto-top"></a>
+        <!-- End Back To Top  -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+    <!-- Modernizer JS -->
+    <script src=" {% static 'js/modernizr.min.js' %} "></script>
+    <!-- jQuery JS -->
+    <script src=" {% static 'js/jquery.js' %} "></script>
+    <!-- Bootstrap JS -->
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/slick.min.js' %} "></script>
+    <script src=" {% static 'js/tweenmax.min.js' %} "></script>
+    <script src=" {% static 'js/js.cookie.js' %} "></script>
+    <script src=" {% static 'js/jquery.style.switcher.js' %} "></script>
+
+
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</body></html>

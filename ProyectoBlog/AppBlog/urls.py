@@ -1,15 +1,20 @@
 from django.urls import path
+from . import views
 
 from AppBlog.views import *
 #usuario, tags, categoria, post, comentarios, estado
 urlpatterns = [
     path('', inicio, name='AppBlogInicio'),
+    path('aboutme.html', views.aboutme, name='AppBlogAboutme'),
+    path('contacto.html', views.contacto, name='AppBlogContacto'),
     path('usuario/', usuario, name='AppBlogUsuario'),
+    path('estado/', estado, name='AppBlogEstado'),
+    
+    
     path('tags/', tags, name='AppBlogTags'),
     path('categoria/', categoria, name='AppBlogCategoria'),
     path('post/', post, name='AppBlogPost'),
     path('comentarios/', comentarios, name='AppBlogComentarios'),
-    path('estado/', estado, name='AppBlogEstado'),
     path('usuario_formulario/', usuario_formulario, name='AppBlogUsuarioFormulario'),
     path('categoria_formulario/', categoria_formulario, name='AppBlogCategoriaFormulario'),
     path('tag_formulario/', tag_formulario, name='AppBlogTagFormulario'),
