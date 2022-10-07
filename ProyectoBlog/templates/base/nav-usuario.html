@@ -2,7 +2,7 @@
 <div class="header-search d-flex flex-wrap align-items-center justify-content-center justify-content-md-end">
     <ul class="metabar-block">
         {% if user.is_authenticated %}    
-            <li class="icon"><a href="#"><i class="fas fa-bell">5</i></a></li>
+            <li class="icon"><a href="#"><i class="far fa-bell"></i>5</a></li>
             <li class="">{{ user.get_username }}</li>
             {% if user.avatar.imagen %} 
                 <li><a href="#"><img height="40px" src="{{ user.avatar.imagen.url }} " alt=""></a></li>

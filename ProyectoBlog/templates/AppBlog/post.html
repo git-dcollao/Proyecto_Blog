@@ -80,6 +80,10 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
                                 {{ form.as_p }}
                             </div>
                         </div>
+
+<!-- AQUII FLATA AGRAGAR EL TEXTO ENRIQEUSIDO -->
+
+
                         <div class="col-12">
                             <div class="form-submit">
                                 <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
@@ -91,57 +95,8 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
                 </div>
             </div>
             </form>
-            <!-- Start tags ingresados-->
-            <!-- 
-                
-
-                    <div class="content-block post-list-view mt--30">
-                        <div class="post-title">
-                            NOMBRE
-                        </div>
-                        <div class="post-title">
-                            RELACIÓN
-                        </div>                        
-                    </div>
-                    <div class="content-block post-list-view mt--30">
-                        <div class="post-title">
-                            nombre tag
-                        </div>
-                        <div class="post-title">
-                            relacion tag
-                        </div>                        
-                    </div>
-
-            -->
-            <br><br>
-            <div class= "container">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">NOMBRE</th>
-                            <th scope="col">RELACIÓN</th>
-                            <th scope="col" colspan="2">ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for tag in tags %}
-                            <tr>
-                                <th scope="row"></th>
-                                <td>{{ tags.tag }}</td>
-                                <td>{{ tags.relacion }}</td>
-                                <td>mod</td>
-                                <td>elim</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>                    
-                </table>
-            </div>
-            <!-- End tags ingresados-->
-
         {% endblock %}
         <!-- End Banner Area -->
-
 
         <!-- Start Footer Area  -->
         {% include 'base/footer.html' %}

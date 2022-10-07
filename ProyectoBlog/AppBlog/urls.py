@@ -9,15 +9,16 @@ urlpatterns = [
     path('contacto.html', views.contacto, name='AppBlogContacto'),
     path('usuario/', usuario, name='AppBlogUsuario'),
     path('estado/', estado, name='AppBlogEstado'),
-    
-    
-    path('tags/', tags, name='AppBlogTags'),
+    path('post_formulario/', post_formulario, name='AppBlogPostFormulario'),
+    path('tag_formulario/', tag_formulario, name='AppBlogTagFormulario'),
     path('categoria/', categoria, name='AppBlogCategoria'),
-    path('post/', post, name='AppBlogPost'),
+    
+    
+    
     path('comentarios/', comentarios, name='AppBlogComentarios'),
     path('usuario_formulario/', usuario_formulario, name='AppBlogUsuarioFormulario'),
     path('categoria_formulario/', categoria_formulario, name='AppBlogCategoriaFormulario'),
-    path('tag_formulario/', tag_formulario, name='AppBlogTagFormulario'),
+   # path('tag_formulario/', tag_formulario, name='AppBlogTagFormulario'),
     path('busqueda_usuario/', busqueda_usuario, name='AppBlogBusquedaUsuario'),
     path('busqueda_usuario_post/', busqueda_usuario_post, name='AppBlogBusquedaUsuarioPost'),
     path('estado_formulario/', estado_formulario, name='AppBlogEstadoFormulario'),

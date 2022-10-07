@@ -44,7 +44,8 @@ class EstadoForm(forms.Form):
     #id_estado = forms.IntegerField(unique=True)
     nombre = forms.CharField(max_length=100)
     
-    
+
+
 #=====================================================
 # CLASES DE BUSQUEDAS
 #=====================================================

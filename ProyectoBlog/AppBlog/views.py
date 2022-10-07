@@ -4,13 +4,14 @@ import django
 
 from tempfile import template
 from urllib import request
+from django.urls import is_valid_path
 
 from django.views.generic import ListView
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from AppBlog.models import *
-from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm
+from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm, PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
@@ -19,6 +20,8 @@ from django.template.loader import render_to_string
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
+
+
 #=====================================================
 # Crear vista de busqueda con formulario
 #=====================================================
@@ -111,41 +114,7 @@ def categoria_formulario(request):
     }
     
     return render(request, 'AppBlog/categoria_formulario.html', contexto)
-
-def tag_formulario(request):
-    
-    if  request.method == 'POST':
-        mi_formulario = TagsForm(request.POST)
-        
-        if mi_formulario.is_valid():
-            data = mi_formulario.cleaned_data
-            
-            tag1 = Tag(tag=data.get('tag'),
-                        relacion=data.get('relacion'))
-            tag1.save()
-            
-            return redirect('AppBlogTagFormulario')
-        
-    
-        else:
-            mensaje = 'Ocurrio un error no se pudo guardar los datos'
-
-        
-    tag = Tag.objects.all()
-    
-    contexto = {
-        'form': TagsForm(),
-        'tags': tag
-    }
-    
-    return render(request, 'AppBlog/tag_formulario.html', contexto)
-
-#Formulario de Estados 
-#Borrador - Publicado - Baneado
-#class EstadoList(ListView): 
-#    model = Estado
-#    template_name = 'AppBlog/estado.html'
-    
+   
 def estado(request):
     estados = Estado.objects.all()
     
@@ -224,20 +193,92 @@ def editar_estado(request, nombre):
 
 #Formulario de categoria 
 def categoria(request):
-    estados = Categoria.objects.all()
+    categoria = Categoria.objects.all()
+    
     contexto = {
         'categorias': categoria
     }
     
     return render(request, 'AppBlog/categoria.html', contexto)
+
+#Para mostrar todos los post
+def post(request):
+    
+    post1 = Post.objects.all()
+    post1.save()
+    contexto = {
+        'posts': post1
+        
+    }
+    
+    return render(request, 'AppBlog/post.html', contexto)
+
+def post_formulario(request):
+    if request.method == 'POST':
+        mi_formulario = PostForm(request.POST)
+        
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            post1 = Post(autor=data.get('autor'), 
+                         titulo=data.get('titulo'),
+                         body=data.get('body'),
+                         category = data.get('category'),
+                         tag = data.get('tag'),
+                         fehcapublicacion=data.get('fechapublicacion'),
+                         ultimaactualizacion=data.get('ultimaactualizacion'),
+                         imagen=data.get('imagen'),
+                         estado=data.get('estado')
+                         )
+            post1.save()
+            
+            return redirect('AppBlogInicio')
+        
+        else:
+            mensaje = 'Ocurrio un error no se pudo guardar los datos'
+            
+    contexto = {
+        'form': PostForm()
+        ,'titulo_form': 'Registro de Post'
+        ,'boton_envio': 'Publicar'
+    }
+
+    return render(request, 'AppBlog/post_formulario.html', contexto)
+
+def tag_formulario(request):
+    if request.method == 'POST':
+        mi_formulario = TagsForm(request.POST)
+        
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            tag1 = Tag(tag=data.get('tag'), 
+                         relacion=data.get('relacion')
+                         )
+            tag1.save()
+            
+            return redirect('AppBlogInicio')
+        
+        else:
+            mensaje = 'Ocurrio un error no se pudo guardar los datos'
+         
+    contexto = {
+        'form': TagsForm()
+        ,'titulo_form': 'Registro de Tag'
+        ,'boton_envio': 'Enviar' 
+    }
+    
+    return render(request, 'AppBlog/tag_formulario.html', contexto)
+
+
+
+
 #=====================================================
 #=====================================================
 #NO CREADOS AUN
 
 
-def post(request):
 
-    return render(request, 'index.html', {})
 
 def comentarios(request):
 
