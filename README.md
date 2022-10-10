@@ -6,10 +6,15 @@ El tipo de interacción permitirá lograr conectar información entre usuarios m
 
 El objetivo general de esta publicación es el desarrollo de un WebBlog utilizando el lenguaje de programación Python y el framework Django a través del uso de un patrón MVT.
 
-<h6>Autores</h6>
+<h6>Autor</h6>
 <h6>Daniel Collao</h6>
 
-Para el uso de la base de datos el usuario es admin y la clave: XXXXX
+Para el uso de la base de datos los usuarios son: 
+SUPERUSUARIO : danielcollao 
+PASSWORD : 123123Dc
+
+USUARIO : ADMIN
+PASSWORD : 123123Dc
 
 <h1>Uso de la Aplicación</h1>
 En primer lugar para asegurar que funcionará sin inconvenientes, se sugiere la creación
@@ -41,11 +46,20 @@ Campos solicitados: nombre, usuario, password, email, lastlogin, dateregistro, d
 En la sección de categorías se pueden dar de alta las diversas categorías de los ingresos o post que se vayan realizando de forma de poder clasificarlos en base a esta opción y así a futuro poder realizar un filtrado de los ingresos realizados hasta el momento. En este caso los atributos que se utilizan corresponden al nombre que identifica a la categoría y a la relación con el posteo correspondiente para su clasificación.
 Campos solicitados: nombre y parent.
     
-<h2>Etiquetas</h2>
-En la sección de etiquetas se pueden dar de alta las diferentes formas de marcar los mensajes que se vayan incorporando al WebBlog, por un lado un posteo tiene una categoría definida pero puede tener varias etiquetas que lo representen, de forma de realizar un proceso de búsqueda que filtre en una forma más adecuada los contenidos y así encontrar más fácilmente los diversos mensajes involucrados. En este caso los campos que se utilizan para su alta son la etiqueta correspondiente y la relación con los mensajes o posteos realizados. 
-Campos solicitados: tag y relacion
-
 <h2>Búsqueda</h2>
 En el apartado de búsqueda se puede proceder a realizar la búsqueda de un usuario en particular. Este proceso se realiza con los usuarios que ya están dados de alta en el sistema de WebBlog analizando la información que contiene la base de datos.
 
-<h6>Por el momento los formularios para la generación de posteos y los correspondientes comentarios no han sido implementados ya que serán incorporados en próximas versiones</h6>
+<h2>OBSERVACIONES</h2>
+ - El formulario de contacto no envia mails ya que se debe colocar la clave del correo 
+ - 
+
+<h2>PROXIMMA VERSIÓN </h2>
+<ul>
+<li>Poder realizar comentarios en cada post una vez estando logeado</li>
+<li>Poder mostrar en el menú, las categorias que se ingresen</li>
+<li>Poder mostrar los post hacia el lado y no hacia abajo</li>
+<li>Poder mostrar en el menú, las categorias que se ingresen</li>
+<li>Poder mostrar los awesome</li>
+<li>Poder mostrar la cantidad de comentarios sin leer</li>
+<li>Poder dar like en los post</li>
+</ul>
