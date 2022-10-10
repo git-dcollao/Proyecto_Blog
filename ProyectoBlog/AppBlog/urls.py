@@ -17,10 +17,13 @@ urlpatterns = [
     path('usuario_formulario/', usuario_formulario, name='AppBlogUsuarioFormulario'),
     path('busqueda_usuario/', busqueda_usuario, name='AppBlogBusquedaUsuario'),
     path('busqueda_usuario_post/', busqueda_usuario_post, name='AppBlogBusquedaUsuarioPost'),
-    
-    
-    path('post/<int:id>', busqueda_post, name='AppBlogBusquedaPost'),
+        
+    path('busqueda_post/<int:id>', busqueda_post, name='AppBlogBusquedaPost'),
     path('post_categoria/<int:id>/<str:nombre>', busqueda_post_categoria, name='AppBlogPostCategoria'),
+    
+    
+    path('comentario_formulario', comentario_formulario, name='AppBlogComentarioPost'),
+    
     
     path('post/', post, name='AppBlogPost'),
     path('post_formulario/', post_formulario, name='AppBlogPostFormulario'),

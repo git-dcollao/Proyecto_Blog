@@ -1,4 +1,5 @@
 import datetime
+from gc import get_objects
 import django
 
 from tempfile import template
@@ -7,10 +8,10 @@ from django.urls import is_valid_path
 
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from AppBlog.models import *
-from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm, PostForm
+from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm, PostForm, ComentariosForm
 from AppBlog.forms import BusquedaCategoriaForms, BusquedaPostForms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -400,6 +401,45 @@ def busqueda_categoria(request):
 def comentarios(request):
 
     return render(request, 'index.html', {})
+
+def comentario_formulario(request):
+    #post = get_object_or_404(Post, id_post=id_post)
+    
+    #contexto = {        'form':     }
+    
+    if request.method == 'POST':
+        mi_formulario = ComentariosForm(request.POST)
+        #mi_formulario = ComentariosForm.objects.all()
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            comentarios1 = Comentario(
+                userId= data.get('id_user'), 
+                postId=data.get('id'), 
+                titulo=data.get('titulo'), 
+                fecha=data.get('fecha'))
+            try:
+                comentarios1.save()
+                messages.info(request,'Los datos fueron ingresados con exito')
+                
+            except django.db.utils.IntegrityError:
+                messages.error(request,"Ocurrio un error no se pudo guardar los datos")
+                
+            return redirect('AppBlogComentario')
+        
+        else:
+            messages.error(request,"Ocurrio un error no se pudo guardar los datos")
+    
+    comentarios = Comentario.objects.all()
+    
+    contexto = {
+        'form': ComentariosForm(),
+        'titulo_form': 'Ingreso de Comentario',
+        'boton_envio': 'Crear',
+        'comentarios': comentarios,
+    }
+
+    return render(request, 'AppBlog/comentarios_formulario.html', contexto)    
 
 def usuario(request):
 
