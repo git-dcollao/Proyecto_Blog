@@ -1,4 +1,8 @@
-from django import forms 
+from dataclasses import fields
+from django import forms
+from django.forms import CharField, ModelForm
+from .models import *
+
 
 class UsuarioForm(forms.Form):
     nombre = forms.CharField(max_length=40)
@@ -12,24 +16,23 @@ class UsuarioForm(forms.Form):
     #Activo - Inactivo - Bloqueado - Eliminado ...
     
 class CategoriaForm(forms.Form):
-    #id_categoria = forms.IntegerField(unique=True)
     nombre = forms.CharField(max_length=40)
-    parent = forms.IntegerField()
     
 class PostForm(forms.Form):
-    #id_post = forms.IntegerField(unique=True)
-    autor = forms.IntegerField()
+    #class Meta:
+       # models = Post
+       # fields = '__all__'
+    autor = forms.CharField(max_length=200)
     titulo = forms.CharField(max_length=200)
     body = forms.Textarea()
     category = forms.IntegerField()
     tags = forms.IntegerField()
     fechapublicacion = forms.DateField()
-    ultimaactualizacion = forms.DateField()
     imagen = forms.CharField(max_length=200) #   ----- VER COMO SUBIR FOTOS ----
     estado = forms.IntegerField() #inicio - publicado - baneado
     
+    
 class TagsForm(forms.Form):
-    #id_tags = forms.IntegerField(unique=True)
     tag = forms.CharField(max_length=200)
     relacion = forms.CharField(max_length=200)
     
@@ -45,11 +48,25 @@ class EstadoForm(forms.Form):
     nombre = forms.CharField(max_length=100)
     
 
-
 #=====================================================
 # CLASES DE BUSQUEDAS
 #=====================================================
 #Busqueda de usaurios 
 class BusquedaUsuarioForms(forms.Form):
     usuario = forms.CharField()
+
+class BusquedaCategoriaForms(forms.Form):
+    categoria = forms.CharField()
+    
+class BusquedaPostForms(forms.Form):
+    titulo = CharField()
+
+class BusquedaTagForms(forms.Form):
+    tag = forms.CharField()
+    
+class BusquedaComnetarioForms(forms.Form):
+    titulo = forms.CharField()
+
+class BusquedaEstadoForms(forms.Form):
+    tag = forms.CharField()
     

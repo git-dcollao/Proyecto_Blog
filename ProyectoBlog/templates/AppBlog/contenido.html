@@ -12,25 +12,24 @@
                 <div class="row">
                     <div class="col-lg-6 col-xl-6" aling="center">
                         <!-- Start Login Form  -->
-                        <div class="axil-section-gapTop axil-contact-form-area">
-                            <h2 class="title"> {{ titulo_form}} </h2>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                {{ form.as_p }}
-                                {{ form.media }}
+                        {% for post in object_list %}
+                            <div class="axil-section-gapTop axil-contact-form-area">
+                                <h2 class="title"> {{ post.titulo}} </h2>
+                                <small>Por:  {{ post.autor.nombre}} - {{ post.post_date}} </small>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-submit">
-                                <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    {{ post.body }}
+                                </div>
                             </div>
-                        </div>
+                            <br>
+                        {% endfor %}
 
                         <!-- End Login Form  -->
                     </div>
                 </div>
             </div>
+            <a href={% url 'inicio' %} class="btn btn-secondary"> Back </a>
             </form>
         {% endblock %}
         <!-- End Banner Area -->

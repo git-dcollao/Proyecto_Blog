@@ -4,28 +4,28 @@
     <li class="menu-item-has-children"><a href="#">CATEGORIAS</a>
         <ul class="axil-submenu">
             <li>
-                <a class="hover-flip-item-wrapper" href="index.html">
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 4 "TECNOLOGIA" %}">
                     <span class="hover-flip-item">
                         <span data-text="Tecnologia">TECNOLOGIA</span>
                     </span>
                 </a>
             </li>
             <li>
-                <a class="hover-flip-item-wrapper" href="/home-creative-blog.html">
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 1 "PROGRAMACIÓN" %}">
                     <span class="hover-flip-item">
                         <span data-text="Programación">PROGRAMACIÓN</span>
                     </span>
                 </a>
             </li>
             <li>
-                <a class="hover-flip-item-wrapper" href="/home-seo-blog.html">
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 3 "DISEÑO" %}">
                     <span class="hover-flip-item">
                         <span data-text="Diseño">DISEÑO</span>
                     </span>
                 </a>
             </li>
             <li>
-                <a class="hover-flip-item-wrapper" href="/home-tech-blog.html">
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 2 "LoT" %}">
                     <span class="hover-flip-item">
                         <span data-text="LoT">LoT</span>
                     </span>
@@ -53,11 +53,13 @@
                                     <div class="content-block image-rounded">
                                         <div class="post-thumbnail mb--20">
                                             <a href="post-details.html">
-                                                <img class="w-100" height="10px" src="/media/web/modificar.jpg" alt="CRUD">
+                                                <img class="w-30" height="10px" src="/media/web/modificar.jpg" alt="CRUD">
                                             </a>
                                         </div>
                                         <div class="post-content">
-                                            <h5 class="title"><a href="#">Usuarios</a></h5>
+                                            <h5 class="title"><a href="#">USUARIOS</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogUsuarioFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogBusquedaUsuario' %}">Buscar</a></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -68,56 +70,49 @@
                                     <div class="content-block image-rounded">
                                         <div class="post-thumbnail mb--20">
                                             <a href="#">
-                                                <img class="w-100" src="/media/web/modificar.jpg" alt="CRUD">
+                                                <img class="w-30" src="/media/web/modificar.jpg" alt="CRUD">
                                             </a>
                                         </div>
                                         <div class="post-content">
-                                            <h5 class="title"><a href="#">Categorias</a></h5>
+                                            <h5 class="title"><a href="#">CATEGORIAS</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogCategoriaFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogCategoria' %}">Modificar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogCategoria' %}">Eliminar</a></h5>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- End Post List  -->
+
+                                <!-- Start Post List  - ->
+                                <div class="col-lg-3">
+                                    <div class="content-block image-rounded">
+                                        <div class="post-thumbnail mb--20">
+                                            <a href="#">
+                                                <img class="w-30" src="/media/web/modificar.jpg" alt="CRUD">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h5 class="title"><a href="#">ESTADOS</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogEstadoFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogEstado' %}">Modificar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogEstado' %}">Eliminar</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!- - End Post List  -->
 
                                 <!-- Start Post List  -->
                                 <div class="col-lg-3">
                                     <div class="content-block image-rounded">
                                         <div class="post-thumbnail mb--20">
                                             <a href="#">
-                                                <img class="w-100" src="/media/web/modificar.jpg" alt="CRUD">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="title"><a href="{% url 'AppBlogEstado' %}">Estados</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Post List  -->
-
-                                <!-- Start Post List  -->
-                                <div class="col-lg-3">
-                                    <div class="content-block image-rounded">
-                                        <div class="post-thumbnail mb--20">
-                                            <a href="#">
-                                                <img class="w-100" src="/media/web/modificar.jpg" alt="CRUD">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="title"><a href="#">Tags</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Post List  -->
-
-                                <!-- Start Post List  -->
-                                <div class="col-lg-3">
-                                    <div class="content-block image-rounded">
-                                        <div class="post-thumbnail mb--20">
-                                            <a href="#">
-                                                <img class="w-100" src="/media/web/modificar.jpg" alt="CRUD">
+                                                <img class="w-30" src="/media/web/modificar.jpg" alt="CRUD">
                                             </a>
                                         </div>
                                         <div class="post-content">
                                             <h5 class="title"><a href="#">Mis Post</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogPostFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogPost' %}">Buscar</a></h5>
                                         </div>
                                     </div>
                                 </div>

@@ -1,26 +1,26 @@
 import datetime
-from msilib.schema import Class
 import django
 
 from tempfile import template
 from urllib import request
 from django.urls import is_valid_path
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from AppBlog.models import *
 from AppBlog.forms import UsuarioForm, BusquedaUsuarioForms, CategoriaForm, TagsForm, EstadoForm, PostForm
+from AppBlog.forms import BusquedaCategoriaForms, BusquedaPostForms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.contrib import messages
-from django.conf import settings
 from django.core.mail import send_mail
-
+from .models import Post
+from ckeditor.fields import RichTextField
 
 #=====================================================
 # Crear vista de busqueda con formulario
@@ -86,35 +86,23 @@ def usuario_formulario(request):
     }
     
     return render(request, 'AppBlog/usuario_formulario.html', contexto)
-
-def categoria_formulario(request):
+ 
+def busqueda_post_post(request):
+    nombre = request.GET.get('post')
     
-    if  request.method == 'POST':
-        mi_formulario = CategoriaForm(request.POST)
+    categoria = Categoria.objects.filter(nombre__icontains=nombre)
         
-        if mi_formulario.is_valid():
-            data = mi_formulario.cleaned_data
-            
-            categoria1 = Categoria(nombre=data.get('nombre'), 
-                                   parent=data.get('parent'))
-            categoria1.save()
-            
-            return redirect('AppBlogCategoriaFormulario')
-        
-    
-        else:
-            mensaje = 'Ocurrio un error no se pudo guardar los datos'
-
-        
-    categoria = Categoria.objects.all()
-    
     contexto = {
-        'form': CategoriaForm(),
-        'categorias': categoria
+        'categorias': categoria,
+        'form_titulo': 'Busqueda categoria por nombre',
+        'titulo_form': 'Busqueda de Categorias',
+        'boton_envio': 'Buscar'
+                
     }
-    
-    return render(request, 'AppBlog/categoria_formulario.html', contexto)
-   
+
+    return render(request, 'AppBlog/base_filtrado.html', contexto)
+
+
 def estado(request):
     estados = Estado.objects.all()
     
@@ -191,44 +179,36 @@ def editar_estado(request, nombre):
     }
     return render(request, 'base_formulario', contexto)
 
-#Formulario de categoria 
-def categoria(request):
-    categoria = Categoria.objects.all()
-    
-    contexto = {
-        'categorias': categoria
-    }
-    
-    return render(request, 'AppBlog/categoria.html', contexto)
 
 #Para mostrar todos los post
+@login_required()
 def post(request):
-    
-    post1 = Post.objects.all()
-    post1.save()
+    post = Post.objects.all()
     contexto = {
-        'posts': post1
-        
+        'form': PostForm(),
+        'posts': post,
+        'titulo_form': 'Formulario de Post',
+        'boton_envio': 'Crear'
     }
     
     return render(request, 'AppBlog/post.html', contexto)
 
+@login_required()
 def post_formulario(request):
     if request.method == 'POST':
-        mi_formulario = PostForm(request.POST)
+        mi_formulario = PostForm(request.POST, files=request.FILES)
         
         if mi_formulario.is_valid():
             data = mi_formulario.cleaned_data
             
-            post1 = Post(autor=data.get('autor'), 
-                         titulo=data.get('titulo'),
-                         body=data.get('body'),
-                         category = data.get('category'),
+            post1 = Post(autor = data.get('user.username'), 
+                         titulo = data.get('titulo'),
+                         body = data.get('body'),
+                         categoria = data.get('categoria'),
                          tag = data.get('tag'),
-                         fehcapublicacion=data.get('fechapublicacion'),
-                         ultimaactualizacion=data.get('ultimaactualizacion'),
-                         imagen=data.get('imagen'),
-                         estado=data.get('estado')
+                         fehcapublicacion = datetime.date.today() ,
+                         imagen = data.get('imagen'),
+                         estado = data.get('estado')
                          )
             post1.save()
             
@@ -244,6 +224,36 @@ def post_formulario(request):
     }
 
     return render(request, 'AppBlog/post_formulario.html', contexto)
+
+def busqueda_post(request, id):
+    post = Post.objects.get(id=id)
+    post = Post.objects.filter(id__icontains=id)
+        
+    contexto = {
+        'posts': post,
+        'form_titulo': 'Busqueda post por nombre',
+        'titulo_form': 'Busqueda de Post',
+        'boton_envio': 'Siguiente'
+                
+    }
+
+    return render(request, 'AppBlog/articulodetalles.html', contexto)
+
+def busqueda_post_categoria(request, id, nombre):
+    post = Post.objects.get(id=id)
+    post = Post.objects.filter(id__icontains=id)
+        
+    contexto = {
+        'posts': post,
+        'form_titulo': 'Busqueda post por nombre',
+        'post_tipo': nombre,
+        'boton_envio': 'Siguiente'
+                
+    }
+
+    return render(request, 'AppBlog/post_list.html', contexto)
+
+
 
 def tag_formulario(request):
     if request.method == 'POST':
@@ -271,22 +281,125 @@ def tag_formulario(request):
     return render(request, 'AppBlog/tag_formulario.html', contexto)
 
 
+#Formulario de categoria 
+def categoria(request):
+    categoria = Categoria.objects.all()
+    
+    contexto = {
+        'form': CategoriaForm(),
+        'categorias': categoria,
+        'boton_envio': 'Crear'
+    }
+    
+    return render(request, 'AppBlog/categoria.html', contexto)
 
+def categoria_formulario(request):
+    if request.method == 'POST':
+        mi_formulario = CategoriaForm(request.POST)
+        
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            categoria1 = Categoria(id_categoria=data.get('id_categoria'), 
+                                   nombre=data.get('nombre'))
+            try:
+                categoria1.save()
+                messages.info(request,'Los datos fueron ingresados con exito')
+                
+            except django.db.utils.IntegrityError:
+                messages.error(request,"Ocurrio un error no se pudo guardar los datos")
+                
+            return redirect('AppBlogCategoria')
+        
+        else:
+            messages.error(request,"Ocurrio un error no se pudo guardar los datos")
+    
+    categorias = Categoria.objects.all()
+    
+    contexto = {
+        'form': CategoriaForm(),
+        'titulo_form': 'Ingreso de Categoria',
+        'boton_envio': 'Crear',
+        'categorias': categorias,
+    }
 
+    return render(request, 'AppBlog/categoria_formulario.html', contexto)
+
+def eliminar_categoria(request, id_categoria):
+    categoria_eliminar = Categoria.objects.get(id_categoria=id_categoria)
+    try:
+        categoria_eliminar.delete()
+        messages.info(request, f"La categoria {categoria_eliminar} fue eliminada con exito")
+    except django.db.utils.IntegrityError:
+        messages.error(request, f"Ocurrio un error no pudo ser eliminada la categoria: {categoria_eliminar}")
+
+    return redirect("AppBlogCategoria")
+
+def editar_categoria(request, id_categoria):
+    categoria_editar = Categoria.objects.get(id_categoria=id_categoria)
+    
+    if request.method == 'POST':
+        mi_formulario = CategoriaForm(request.POST)
+        
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            
+            categoria_editar.id_categoria = data.get('id_categoria')
+            categoria_editar.nombre = data.get('nombre')
+            
+            try: 
+                categoria_editar.save()
+            except django.db.utils.IntegrityError:
+                messages.error(request," La modificación fallo  ")
+                
+            return redirect('AppBlogCategoria')
+            
+    contexto = {
+        'form': CategoriaForm(
+            initial={
+                "parent": categoria_editar.id_categoria,
+                "nombre": categoria_editar.nombre
+                }
+            ),
+        'titulo_form': 'Formulario de Categoria',
+        'boton_envio': 'Actualizar'
+    }
+    
+    return render(request, 'AppBlog/categoria_formulario.html', contexto)
+
+def busqueda_categoria_post(request):
+    nombre = request.GET.get('nombre')
+    
+    categoria = Categoria.objects.filter(nombre__icontains=nombre)
+        
+    contexto = {
+        'categorias': categoria,
+        'form_titulo': 'Busqueda categoria por nombre',
+        'titulo_form': 'Busqueda de Categorias',
+        'boton_envio': 'Buscar'
+                
+    }
+
+    return render(request, 'AppBlog/base_filtrado.html', contexto)
+
+def busqueda_categoria(request):
+    
+    contexto = {
+        'form': BusquedaCategoriaForms(),
+        'titulo_form': 'Busqueda de Categorias',
+        'boton_envio': 'Buscar'
+                
+    }
+
+    return render(request, 'forms/Busquedas.html', contexto)
+    
+    
+    
 #=====================================================
 #=====================================================
-#NO CREADOS AUN
-
-
-
-
 def comentarios(request):
 
     return render(request, 'index.html', {})
-
-def inicio(request):
-
-    return render(request, 'inicio.html', {})
 
 def usuario(request):
 
@@ -328,6 +441,27 @@ def contacto(request):
 
 
 #no lo he hecho para ver todos los post pero que sean restringido solo usuarios logeados
-class postList(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = 'AppBlog/post.html' 
+def inicio(request):
+    post = Post.objects.all()
+    contexto = {
+        'posts' : post
+    }
+    return render(request, 'AppBlog/inicio.html', contexto )    
+
+
+
+
+
+
+#--------------------------------------------------
+#  CODIFGO NO UTILIZADO
+#--------------------------------------------------
+
+#def busqueda_post(request):
+# 
+#    contexto = {
+#        'form': BusquedaPostForms(),
+#        'titulo_form': 'Busqueda de Titulos de Post',
+#        'boton_envio': 'Buscar'           
+#    }
+#    return render(request, 'AppBlog/Busqueda_categoria.html', contexto)

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- Template obtenido desde https://new.axilthemes.com/demo/template/blogar/home-lifestyle-blog-dark.html SOLO PARA PROYECTO FINAL (USO PERSONAL)-->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns 
+csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle 
+csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang="en">
+    <head> 
+        {% load static %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="robots" content="noindex, follow">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href=" {% static '/assets/LogoDC-V2.ico' %} ">
+        <link rel="icon" href=" {% static '/assets/LogoDC-V2.ico' %} ">
+
+        <!-- CSS
+        ============================================ -->
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
+    </head>
+
+<body class="active-dark-mode">
+    <div class="main-wrapper">
+        <div class="mouse-cursor cursor-outer" style="visibility: visible; transform: translate(660px, 287px);"></div>
+        <div class="mouse-cursor cursor-inner" style="visibility: visible; transform: translate(660px, 287px);"></div>
+
+        <!-- Sector para mensajes de las respuestas GET-POST-PUSH-PULL -->
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        <!-- Start Header -->
+        {% include 'base/header.html' %}
+        <!-- Start Header -->
+
+        <!-- Start Mobile Menu Area  -->
+            {% comment %} 
+            <div class="popup-mobilemenu-area">
+            <div class="inner">
+                <div class="mobile-menu-top">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img class="dark-logo" src="{% static 'assets/LogoDC-V3.jpg' %} " alt="Logo Images">
+                        </a>
+                    </div>
+                    <div class="mobile-close">
+                        <div class="icon">
+                            <i class="fal fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+            {% endcomment %}
+        <!-- End Mobile Menu Area  -->
+
+        <!-- Start Banner Area -->
+        {% block inicio %}
+            
+            <form action="/AppBlog/busqueda_categoria_post" method="GET" enctype="multipart/form-data">
+                {% csrf_token%}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6" aling="center">
+                        <!-- Start Login Form  -->
+                        <div class="axil-section-gapTop axil-contact-form-area">
+                            <h2 class="title"> {{ titulo_form}} </h2>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                {{ form.as_p }}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-submit">
+                                <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
+                            </div>
+                        </div>
+
+                        <!-- End Login Form  -->
+                    </div>
+                </div>
+            </div>
+            </form>
+            <!-- Start categorias ingresados-->
+            <br><br>
+            <div class= "container">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">PARENTs</th>
+                            <th scope="col" colspan="2">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in categorias %}
+                            <tr>
+                                <th scope="row">#</th>
+                                <td>{{ categoria.nombre }}</td>
+                                <td>{{ categoria.parent }}</td>
+                                <td>mod</td>
+                                <td>elim</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>                    
+                </table>
+            </div>
+            <!-- End tags ingresados-->
+
+        {% endblock %}
+        <!-- End Banner Area -->
+
+
+        <!-- Start Footer Area  -->
+        {% include 'base/footer.html' %}
+        <!-- End Footer Area  -->
+
+        <!-- Start Back To Top  -->
+        <a id="backto-top"></a>
+        <!-- End Back To Top  -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+    <!-- Modernizer JS -->
+    <script src=" {% static 'js/modernizr.min.js' %} "></script>
+    <!-- jQuery JS -->
+    <script src=" {% static 'js/jquery.js' %} "></script>
+    <!-- Bootstrap JS -->
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/slick.min.js' %} "></script>
+    <script src=" {% static 'js/tweenmax.min.js' %} "></script>
+    <script src=" {% static 'js/js.cookie.js' %} "></script>
+    <script src=" {% static 'js/jquery.style.switcher.js' %} "></script>
+
+
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</body></html>

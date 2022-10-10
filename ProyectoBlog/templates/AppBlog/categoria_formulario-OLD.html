@@ -120,16 +120,16 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">NOMBRE</th>
-                            <th scope="col">RELACIÓN</th>
+                            <th scope="col">PARENTs</th>
                             <th scope="col" colspan="2">ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for tag in tags %}
+                        {% for categoria in categorias %}
                             <tr>
-                                <th scope="row"></th>
-                                <td>{{ tags.tag }}</td>
-                                <td>{{ tags.relacion }}</td>
+                                <th scope="row">#</th>
+                                <td>{{ categoria.nombre }}</td>
+                                <td>{{ categoria.parent }}</td>
                                 <td>mod</td>
                                 <td>elim</td>
                             </tr>

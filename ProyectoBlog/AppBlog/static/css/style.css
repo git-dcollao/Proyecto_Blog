@@ -8992,7 +8992,7 @@ Post List Style
   border-radius: var(--radius);
 }
 .content-block .post-thumbnail a img {
-  width: 100%;
+  width: 30%;
 }
 .content-block.image-rounded .post-thumbnail {
   overflow: hidden;

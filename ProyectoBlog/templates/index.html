@@ -6,7 +6,8 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
     <head> 
         {% load static %}
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- Font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -66,9 +67,10 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
 
         <!-- Start Area Contenedor   -->
         {% block inicio %}
-            
-        {% endblock %} 
+           
         
+        {% endblock %} 
+        <br>
         <!-- End Area Contenedor   -->
 
         <!-- Start Footer Area  -->

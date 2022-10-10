@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+<!-- Start Banner Area -->
+{% block inicio %}
+     <!-- Sector para mensajes de las respuestas GET-POST-PUSH-PULL -->
+    
+   
+    <!-- <form action="" method="POST" enctype="multipart/form-data"> -->
+    {% csrf_token%}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-xl-6" aling="center">
+                <!-- Start Login Form  -->
+                <div class="axil-section-gapTop axil-contact-form-area">
+                    <h2 class="title"> BLOG's - {{ post_tipo }} </h2>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <ul>
+                        {% for post in posts %}
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt--20">
+                            <!-- Start Post Grid  -->
+                            <div class="content-block post-grid post-grid-transparent post-grid-small post-overlay-bottom">
+                                <div class="post-thumbnail">
+                                    <a href="#">
+                                        <img src="/media/{{ post.imagen}}" alt="Post Images">
+                                    </a>
+                                </div>
+                                <div class="post-grid-content">
+                                    <div class="post-content">
+                                        <div class="post-cat">
+                                            <div class="post-cat-list">
+                                                <a class="hover-flip-item-wrapper" href="#">
+                                                    <span class="hover-flip-item">
+                                                        <span data-text="{{ post.categoria.nombre}}">{{ post.categoria.nombre}} </span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <h5 class="title"><a href="{% url 'AppBlogBusquedaPost' post.id %}">{{ post.titulo}} </a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Start Post Grid  -->
+                        </div>
+                        
+                       
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!--
+                    <div class="col-12">
+                    <div class="form-submit">
+                        <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
+                    </div>
+                </div>
+                 End Login Form  -->
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}
+<!-- End Banner Area -->
+
