@@ -18,8 +18,13 @@
                                 {{ post.body | safe }}
                             </div>
                         </div>
-                        <a class="btn btn-secondary" href="{% url 'AppBlogInicio' %}"> Back</a>
+                        <a class="btn btn-secondary" href="{% url 'AppBlogInicio' %}">  BACK  </a>
+                        <a class="btn btn-success" href="{% url 'AppBlogComentarioPost' %}">  COMENTAR  </a>
+                        
                         {% endfor %}
+
+                        
+                        
                         <!-- End Login Form  -->
                     </div>
                 </div>
