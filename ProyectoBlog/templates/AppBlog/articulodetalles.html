@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+        <!-- Start Banner Area -->
+        {% block inicio %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-xl-10" aling="center">
+                        <!-- Start Login Form  -->
+                        {% for post in posts %}
+
+                        <div class="axil-section-gapTop axil-contact-form-area">
+                            <h2 class="title"> {{ post.titulo }} </h2>
+                            <small> Por: {{ post.autor }} - {{ post.fechapublicacion }}<br></small>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                {{ post.body | safe }}
+                            </div>
+                        </div>
+                        <a class="btn btn-secondary" href="{% url 'AppBlogInicio' %}">  BACK  </a>
+                        <a class="btn btn-success" href="{% url 'AppBlogComentarioPost' %}">  COMENTAR  </a>
+                        
+                        {% endfor %}
+
+                        
+                        
+                        <!-- End Login Form  -->
+                    </div>
+                </div>
+            </div>
+            </form>
+        {% endblock %}
+        <!-- End Banner Area -->

@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+    {{ nombre_form }}
+{% endblock %}
+
+{% block inicio %}
+    <h2>{{ titulo_form }} </h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <input type="submit" value="{{ nombre_form }}">
+        
+    </form>
+    <!--
+    <div class="breadcumb-area bg-img bg-gradient-overlay" style="background-image: url('media/web/author.png');">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-6" style="margin:30 auto 0 auto">
+                    <form action="" method="POST">
+                    {% csrf_token %}
+                    
+                        {{ form.as_p }}
+                    
+                        <input type="submit" value="{{ nombre_form }}">
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+{% endblock %}

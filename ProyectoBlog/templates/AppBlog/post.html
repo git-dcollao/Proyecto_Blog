@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+        <!-- Start Banner Area -->
+        {% block inicio %}
+             <!-- Sector para mensajes de las respuestas GET-POST-PUSH-PULL -->
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+           
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6" aling="center">
+                        <!-- Start Login Form  -->
+                        <div class="axil-section-gapTop axil-contact-form-area">
+                            <h2 class="title"> {{ titulo_form}} </h2>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                {{ form.as_p }}
+                                {{ form.media }}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-submit">
+                                <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
+                            </div>
+                        </div>
+
+                        <!-- End Login Form  -->
+                    </div>
+                </div>
+            </div>
+            </form>
+        {% endblock %}
+        <!-- End Banner Area -->

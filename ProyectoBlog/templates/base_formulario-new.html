@@ -6,12 +6,10 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
     <head> 
         {% load static %}
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- Font awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <!-- {% block title %}Blog Coderhouse - CODE31095 - Daniel Collao{% endblock %} -->
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +22,7 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}"><!---->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -37,19 +35,20 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
     <div class="main-wrapper">
         <div class="mouse-cursor cursor-outer" style="visibility: visible; transform: translate(660px, 287px);"></div>
         <div class="mouse-cursor cursor-inner" style="visibility: visible; transform: translate(660px, 287px);"></div>
-
         
         <!-- Start Header -->
         {% include 'base/header.html' %}
+    
         <!-- Start Header -->
 
         <!-- Start Mobile Menu Area  -->
-        <div class="popup-mobilemenu-area">
+            {% comment %} 
+            <div class="popup-mobilemenu-area">
             <div class="inner">
                 <div class="mobile-menu-top">
                     <div class="logo">
                         <a href="index.html">
-                            <img class="dark-logo" src="{% static 'assets/Logo DC.jpg' %} " alt="Logo Images">
+                            <img class="dark-logo" src="{% static 'assets/LogoDC-V3.jpg' %} " alt="Logo Images">
                         </a>
                     </div>
                     <div class="mobile-close">
@@ -60,18 +59,15 @@ csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-bre
                 </div>
                 
             </div>
-        </div>
+            </div>
+            {% endcomment %}
         <!-- End Mobile Menu Area  -->
 
-        
-
-        <!-- Start Area Contenedor   -->
-        {% block inicio %}
-           
-        
-        {% endblock %} 
-        <br>
-        <!-- End Area Contenedor   -->
+        <!-- Start Banner Area -->
+        {% block contenido %}
+            Aqui va el contenido de las web
+        {% endblock %}
+        <!-- End Banner Area -->
 
         <!-- Start Footer Area  -->
         {% include 'base/footer.html' %}

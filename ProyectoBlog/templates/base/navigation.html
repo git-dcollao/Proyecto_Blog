@@ -1,37 +1,134 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#!">Blog CoderHouse 31095 </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="{% url 'AppBlogInicio' %}">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'AppBlogEstado' %}">Estado</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogUsuarioFormulario' %}">Formulario_Usuario</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogCategoriaFormulario' %}">Formulario_Categoria</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogTagFormulario' %}">Formulario_Tag</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogBusquedaUsuario' %}">Buscar_Usuario</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogEstadoFormulario' %}">Formulario_Estados</a></li>
+{% load static%}
+<ul class="mainmenu">
+    <li class="menu-item-has-children"><a href="{% url 'AppBlogInicio' %}">INICIO</a></li>
+    <li class="menu-item-has-children"><a href="#">CATEGORIAS</a>
+        <ul class="axil-submenu">
+            <li>
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 4 "TECNOLOGIA" %}">
+                    <span class="hover-flip-item">
+                        <span data-text="Tecnologia">TECNOLOGIA</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 1 "PROGRAMACIÓN" %}">
+                    <span class="hover-flip-item">
+                        <span data-text="Programación">PROGRAMACIÓN</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 3 "DISEÑO" %}">
+                    <span class="hover-flip-item">
+                        <span data-text="Diseño">DISEÑO</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a class="hover-flip-item-wrapper" href="{% url 'AppBlogPostCategoria' 2 "LoT" %}">
+                    <span class="hover-flip-item">
+                        <span data-text="LoT">LoT</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="menu-item-has-children megamenu-wrapper"><a href="#">ADMINISTRACIÓN</a>
+        <ul class="megamenu-sub-menu">
+            <li class="megamenu-item">
 
-                {% if user.is_authenticated %}
-                    <img height="40px" src="{{ user.avatar.imagen.url }}" alt="">
-                    <h5>User: {{ user.get_username }} </h5>
-                    <li class="nav-item"><a class="btn btn-primary" aria-current="page" href="{% url 'UserBlogLogout' %}">Logout</a></li>
-                {% else %}
-                    <li class="nav-item"><a class="btn btn-primary" aria-current="page" href="{% url 'UserBlogRegister' %}">Registro</a></li>
-                    <li class="nav-item"><a class="btn btn-primary" aria-current="page" href="{% url 'UserBlogLogin' %}">Login</a></li>
-                {% endif %}
+                <!-- Start Verticle Nav  -->
                 
+                <!-- Start Verticle Nav  -->
                 
-            </ul>
-        </div>
-    </div>
-</nav>
-            <!--        
-            <li class="nav-item"><a class="nav-link" href="{ % url 'AppBlogCRUD' %  }">Nuevo Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="{  % url 'AppBlogBuscar' %  }">Buscar </a></li>
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogUsuario' %}">Usuarios</a></li>
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogTags' %}">Tags</a></li>
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogPost' %}">Post</a></li>                
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AppBlogCategoria' %}">Categoria</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-            !-->
+                <!-- Start Verticle Menu  -->
+                <div class="axil-vertical-nav-content">
+                    <!-- Start One Item  -->
+                    <div class="axil-vertical-inner tab-content" id="tab1" style="display: block;">
+                        <div class="axil-vertical-single">
+                            <div class="row">
+                                <!-- Start Post List  -->
+                                <div class="col-lg-3">
+                                    <div class="content-block image-rounded">
+                                        <div class="post-thumbnail mb--20">
+                                            <a href="post-details.html">
+                                                <img class="w-30" height="10px" src="/media/web/modificar.jpg" alt="CRUD">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h5 class="title"><a href="#">USUARIOS</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogUsuarioFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogBusquedaUsuario' %}">Buscar</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Post List  -->
+
+                                <!-- Start Post List  -->
+                                <div class="col-lg-3">
+                                    <div class="content-block image-rounded">
+                                        <div class="post-thumbnail mb--20">
+                                            <a href="#">
+                                                <img class="w-30" src="/media/web/modificar.jpg" alt="CRUD">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h5 class="title"><a href="#">CATEGORIAS</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogCategoriaFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogCategoria' %}">Modificar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogCategoria' %}">Eliminar</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Post List  -->
+
+                                <!-- Start Post List  - ->
+                                <div class="col-lg-3">
+                                    <div class="content-block image-rounded">
+                                        <div class="post-thumbnail mb--20">
+                                            <a href="#">
+                                                <img class="w-30" src="/media/web/modificar.jpg" alt="CRUD">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h5 class="title"><a href="#">ESTADOS</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogEstadoFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogEstado' %}">Modificar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogEstado' %}">Eliminar</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!- - End Post List  -->
+
+                                <!-- Start Post List  -->
+                                <div class="col-lg-3">
+                                    <div class="content-block image-rounded">
+                                        <div class="post-thumbnail mb--20">
+                                            <a href="#">
+                                                <img class="w-30" src="/media/web/modificar.jpg" alt="CRUD">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h5 class="title"><a href="#">Mis Post</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogPostFormulario' %}">Ingresar</a></h5>
+                                            <h5 class="title"><a href="{% url 'AppBlogPost' %}">Buscar</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Post List  -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End One Item  -->
+                </div>
+                <!-- End Verticle Menu  -->
+                
+            </li>
+        </ul>
+    </li>
+    {% endif %}
+    <li><a href="{% url 'AppBlogAboutme' %}">ACERCA DE MÍ</a></li>
+    <li><a href="{% url 'AppBlogContacto' %}">CONTACTO</a></li>
+</ul>

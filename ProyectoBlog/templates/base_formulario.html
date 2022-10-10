@@ -1,21 +1,58 @@
 {% extends 'index.html' %}
+        <!-- Start Banner Area -->
+        {% block inicio %}
+        <!-- Sector para mensajes de las respuestas GET-POST-PUSH-PULL -->
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6" aling="center">
+                        <!-- Start Login Form  -->
+                        <div class="axil-section-gapTop axil-contact-form-area">
+                            <h2 class="title"> {{ titulo_form}} </h2>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                {{ form.as_p }}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-submit">
+                                <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
+                            </div>
+                        </div>
+                        <!-- End Login Form  -->
+                    </div>
+                </div>
+            </div>
+            </form>
 
-{% block title %}
-{{ titulo_form }}
-{% endblock %}
 
-{% block inicio %}
-
-    <h2>{{ titulo_form }} </h2>
-
-    <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <input type="submit" value="{{ boton_envio }}">
-
-    </form>
-
-
-{% endblock %}
+            <div class= "container">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">PARENTs</th>
+                            <th scope="col" colspan="2">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in categorias %}
+                            <tr>
+                                <th scope="row">#</th>
+                                <td>{{ categoria.nombre }}</td>
+                                <td>{{ categoria.parent }}</td>
+                                <td><a href="{% url 'AppBlogEditarCategoria' categoria.nombre %}">Modificar</a></td>
+                                <td><a href="{% url 'AppBlogEliminarCategoria' categoria.nombre %}">Eliminar</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>                    
+                </table>%
+            </div>
+        {% endblock %}
+        <!-- End Banner Area -->

@@ -1,0 +1,28 @@
+{% load static %}
+<div class="header-search d-flex flex-wrap align-items-center justify-content-center justify-content-md-end">
+    <ul class="metabar-block">
+        {% if user.is_authenticated %}    
+            <li class="icon"><a href="#"><i class="far fa-bell"></i>5</a></li>
+            <li class="">{{ user.get_username }}</li>
+            {% if user.avatar.imagen %} 
+                <li><a href="#"><img height="40px" src="{{ user.avatar.imagen.url }} " alt=""></a></li>
+            {% else %}
+                <li></li>
+            {% endif %}
+            <li class="btn btn-primary"><a href="{% url 'UserBlogLogout' %}">Logout</a></li>
+        {% else %}
+            <li class="btn btn-primary"><a href="{% url 'UserBlogLogin' %}">Login</a></li> 
+            <li class="btn btn-primary"><a href="{% url 'UserBlogRegister' %}">Registrar</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+
+<!-- Start Hamburger Menu  -->
+<div class="hamburger-menu d-block d-xl-none">
+    <div class="hamburger-inner">
+        <div class="icon"><i class="fal fa-bars"></i>
+        </div>
+    </div>
+</div>
+<!-- End Hamburger Menu  -->

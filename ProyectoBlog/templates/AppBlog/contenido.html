@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+        <!-- Start Banner Area -->
+        {% block inicio %}
+             <!-- Sector para mensajes de las respuestas GET-POST-PUSH-PULL -->
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+           
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6" aling="center">
+                        <!-- Start Login Form  -->
+                        {% for post in object_list %}
+                            <div class="axil-section-gapTop axil-contact-form-area">
+                                <h2 class="title"> {{ post.titulo}} </h2>
+                                <small>Por:  {{ post.autor.nombre}} - {{ post.post_date}} </small>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    {{ post.body }}
+                                </div>
+                            </div>
+                            <br>
+                        {% endfor %}
+
+                        <!-- End Login Form  -->
+                    </div>
+                </div>
+            </div>
+            <a href={% url 'inicio' %} class="btn btn-secondary"> Back </a>
+            </form>
+        {% endblock %}
+        <!-- End Banner Area -->

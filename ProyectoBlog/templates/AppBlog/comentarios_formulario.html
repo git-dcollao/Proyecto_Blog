@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+<!-- Start Banner Area -->
+{% block inicio %}
+    <!-- Sector para mensajes de las respuestas GET-POST-PUSH-PULL -->
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-xl-6" aling="center">
+                <!-- Start Login Form  -->
+                <div class="axil-section-gapTop axil-contact-form-area">
+                    <h2 class="title"> {{ titulo_form}} </h2>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+                 
+                <div class="col-12">
+                    <div class="form-submit">
+                        <input type="submit" value="{{ boton_envio }}" id="submit" class="axil-button button-rounded btn-primary"></input>
+                    </div>
+                </div>
+                <!--End Login Form  -->
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- Start tags ingresados-->
+    
+    <br>
+    <div class= "container">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col" colspan="2">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categoria in categorias %}
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>{{ categoria.id_categoria }}</td>
+                        <td>{{ categoria.nombre }}</td>
+                        <td><a href="{% url 'AppBlogEditarCategoria' categoria.id_categoria %}" class="btn btn-info btn-sm">MODIFICAR</a></td>
+                        <td><a href="{% url 'AppBlogEliminarCategoria' categoria.id_categoria %}" class="btn btn-danger btn-sm">ELIMINAR</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>                    
+        </table>
+    </div>
+    <!-- End tags ingresados-->
+    <br>
+{% endblock %}
+<!-- End Banner Area -->
