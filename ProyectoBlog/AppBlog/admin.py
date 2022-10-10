@@ -4,7 +4,6 @@ from AppBlog.models import Usuario, Categoria, Post, Tag, Comentario, Estado
 
 
 
-
 # Register your models here.
 admin.site.register(Usuario)
 admin.site.register(Categoria) 
